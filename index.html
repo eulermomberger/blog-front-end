@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="blogClient">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./lib/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./lib/css/style.css">
+	<title>BLOG CLIENT</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	<script src="./lib/js/blog.js"></script>
+</head>
+<body ng-controller="BlogController">
+	<header>
+		<div class="container-fluid bg-dark">
+			<div class="row p-4 justify-content-between">
+				<h4 class="text-white">Blog Scopi Sistemas</h4>
+				<div class="row align-items-center pr-4">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+				</div>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="container">
+			<div class="jumbotron my-4 p-4 p-md-5 text-white">
+	    		<div class="col-md-6 px-0">
+	      			<h1 class="display-4 font-italic">Bem-vindo ao Blog do Scopi Sistemas</h1>
+	      			<p class="lead">Uma pequena demonstração de um blog produzido na Scopi Sistemas feito com Ruby on Rails e AngularJS</p>
+	    		</div>
+  			</div>
+			<div class="row">
+				<div class="item mx-3 my-4 card p-4" ng-repeat="post in posts">
+					<div class="row justify-content-end">
+						<h6 
+							class="mr-3 text-success font-weight-bold" 
+							ng-repeat="tag in post.tags"
+						>
+							{{tag.name}}
+						</h6>
+					</div>
+					<div class="post mb-5">
+						<a href=""><h2 class="mb-3">{{post.title}}</h2></a>
+						<p>{{post.description}}</p>
+					</div>
+					<div class="row d-flex justify-content-between p-3 align-items-end">
+						<p class="card-text text-info">{{post.updated_at | date: 'EEE, MMM d'}}</p>
+						<p class="card-text font-italic text-muted">by: {{post.user.name}}</p>					
+					</div>
+					<div class="card">
+						<div ng-if="post.comments[0]" class="row px-4">
+							<p class="card-text pt-2 mb-0 font-weight-bold">
+								{{post.comments[0].user.name}}
+								<span class="card-text pl-3 font-weight-normal">{{post.comments[0].text}}</span>
+							</p>
+							<p ng-if="post.comments[0].comments[0]" class="card-text font-weight-bold pl-3">
+						 		{{post.comments[0].comments[0].user.name}}
+								<span class="card-text pl-3 font-weight-normal">{{post.comments[0].comments[0].text}}</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
