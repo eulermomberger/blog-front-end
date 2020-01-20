@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row my-5 justify-content-center">
+		<div class="col-md-8 input-group mb-4">
+			<input type="text" ng-model="post.title" class="form-control" name="title" placeholder="Título" ng-required="true">
+		</div>
+		<div class="col-md-8 input-group mb-4">
+			<textarea ng-model="post.description" class="form-control" placeholder="Descrição do post" ng-required="true" ng-minlength="10"></textarea>
+		</div>
+		<div class="row col-md-8 input-group mb-4">
+			<select class="mr-2 col-6 form-control" ng-model="post.user_id">
+    			<option value="" disabled>Selecione o usuário</option>
+    			<option value="{{user.id}}" ng-repeat="user in users">{{user.name}}</option>
+  			</select>	
+			<select class="ml-2 form-control" ng-model="post.tag_ids" multiple>
+				<option value="" disabled>Tags</option>
+				<option value={{tag.id}} ng-repeat="tag in tags">{{tag.name}}</option>
+			</select>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<button ng-click="postPost(post)" class="form-control btn-info col-6">Enviar</button>
+	</div>
+</div>

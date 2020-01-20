@@ -3,63 +3,50 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="./lib/bootstrap/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="./lib/css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<title>BLOG CLIENT</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
-	<script src="./lib/js/blog.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+	<script src="./js/blog.js"></script>
 </head>
 <body ng-controller="BlogController">
-	<header>
+	<header class="header" id="scrollHeader">
 		<div class="container-fluid bg-dark">
-			<div class="row p-4 justify-content-between">
-				<h4 class="text-white">Blog Scopi Sistemas</h4>
-				<div class="row align-items-center pr-4">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+			<div class="row px-4 py-2 justify-content-between align-items-center">
+				<a class="row px-4" href="/blog-client/#!/posts">
+					<img src="https://www.scopi.com.br/wp-content/themes/scopi2k19/src/img/white-logo.svg" alt="Scopi">
+					<h3 class="pl-2 align-self-end text-white"> | Blog</h3>
+				</a>
+				<div class="row justify-content-between align-items-center p-2">
+					<a href="/blog-client/#!/posts/new">
+						<svg class="bi bi-plus mx-2" width="52px" height="52px" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H6a.5.5 0 010-1h3.5V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.5 10a.5.5 0 01.5-.5h4a.5.5 0 010 1h-3.5V14a.5.5 0 01-1 0v-4z" clip-rule="evenodd"/></svg>
+					</a>
+					<svg class="bi bi-search mx-2" width="32px" height="32px" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.442 12.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.5 14a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM15 8.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/></svg>
 				</div>
 			</div>
 		</div>
 	</header>
 	<main>
-		<div class="container">
-			<div class="jumbotron my-4 p-4 p-md-5 text-white">
-	    		<div class="col-md-6 px-0">
-	      			<h1 class="display-4 font-italic">Bem-vindo ao Blog do Scopi Sistemas</h1>
-	      			<p class="lead">Uma pequena demonstração de um blog produzido na Scopi Sistemas feito com Ruby on Rails e AngularJS</p>
-	    		</div>
-  			</div>
-			<div class="row">
-				<div class="item mx-3 my-4 card p-4" ng-repeat="post in posts">
-					<div class="row justify-content-end">
-						<h6 
-							class="mr-3 text-success font-weight-bold" 
-							ng-repeat="tag in post.tags"
-						>
-							{{tag.name}}
-						</h6>
-					</div>
-					<div class="post mb-5">
-						<a href=""><h2 class="mb-3">{{post.title}}</h2></a>
-						<p>{{post.description}}</p>
-					</div>
-					<div class="row d-flex justify-content-between p-3 align-items-end">
-						<p class="card-text text-info">{{post.updated_at | date: 'EEE, MMM d'}}</p>
-						<p class="card-text font-italic text-muted">by: {{post.user.name}}</p>					
-					</div>
-					<div class="card">
-						<div ng-if="post.comments[0]" class="row px-4">
-							<p class="card-text pt-2 mb-0 font-weight-bold">
-								{{post.comments[0].user.name}}
-								<span class="card-text pl-3 font-weight-normal">{{post.comments[0].text}}</span>
-							</p>
-							<p ng-if="post.comments[0].comments[0]" class="card-text font-weight-bold pl-3">
-						 		{{post.comments[0].comments[0].user.name}}
-								<span class="card-text pl-3 font-weight-normal">{{post.comments[0].comments[0].text}}</span>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div ng-view></div>
 	</main>
+	<div class="my-5" ng-include="'footer.html'"></div>
+	<script type="text/javascript">
+		window.onscroll = function() {headerScroll()};
+
+		var header = document.getElementById("scrollHeader");
+		var sticky = header.offsetTop;
+
+		function headerScroll() {
+  			if (window.pageYOffset > sticky) {
+    			header.classList.add("sticky");
+  			} else {
+    			header.classList.remove("sticky");
+  			}
+		}
+
+		function respost() {
+			document.getElementById('comment').autofocus
+		}
+	</script>
 </body>
 </html>

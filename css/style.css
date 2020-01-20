@@ -1,0 +1,98 @@
+body {
+  background-color: #FFFAFA;
+}
+
+header {
+  z-index: 1000;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+h1, h2 {
+	font-family: "Playfair Display";
+	font-style: italic;
+}
+
+.banner {
+	background-image: url('../imgs/bg.jpg');
+	background-size: 100%;
+	border-radius: 10px;
+}
+
+.banner-show {
+  background-image: url('../imgs/bg-show.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center; 
+  border-radius: 10px;
+}
+
+header img {
+  width: 50%
+}
+
+header h5 {
+  font-size: 150%;
+}
+
+.item {
+    border-radius: 10px;
+    width: calc(33.33333% - 32px);
+    height: 500px;
+    box-shadow: 1px 3px 6px 0px rgba(0,0,0,.16);
+    transition: transform .2s ease,box-shadow .2s ease,-webkit-transform .2s ease;
+    border-top: 5px solid #C6C6C6;
+}
+
+.post {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 60%;
+}
+
+a:link {
+  text-decoration: none;
+  color: #212529;
+}
+
+.post a:visited {
+  text-decoration: none;
+  color: #212529;
+}
+
+.post a:hover {
+  text-decoration: underline;
+  color: #C6C6C6;
+}
+
+.title {
+  background-color: #007A93;
+  text-align: center;
+  color: #FFFAFA;
+}
+
+.title h3 {
+  font-family: "Playfair Display";
+}
+
+.banner-new {
+  background-image: url('../imgs/bg-new.png');
+  background-size: 100%;
+  background-position: center; 
+  border-radius: 10px;
+}
+
+.comment {
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.respost {
+  font-size: 12px;
+}
