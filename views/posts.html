@@ -8,12 +8,23 @@
 	<div class="row">
 		<div class="item mx-md-3 my-4 card p-4" ng-repeat="post in posts">
 			<div class="row justify-content-between">
-				<svg class="bi bi-three-dots-vertical" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  					<path fill-rule="evenodd" d="M11.5 15a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>
-				</svg>
+				<ul class="menu">
+					<li>
+						<svg class="bi bi-three-dots-vertical" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  							<path fill-rule="evenodd" d="M11.5 15a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>
+						</svg>
+						<ul>
+							<li>
+								<a href="/blog-client//#!/post/edit/{{post.id}}"><h6>Editar</h6></a>
+							</li>
+							<li>
+								<button ng-click="deletePost(post.id)" class="btn btn-link">Deletar</button>
+							</li>
+						</ul>
+					</li>
+				</ul>
 				<div class="menu" id="menu">
-					<a href="/blog-client//#!/post/edit/{{post.id}}"><h6>Editar</h6></a>
-					<button ng-click="deletePost(post.id)">Deletar</button>
+					
 				</div>
 				<div class="row">
 					<h6 
@@ -33,12 +44,12 @@
 				<p class="card-text font-italic text-muted">by: {{post.user.name}}</p>					
 			</div>
 			<div class="card">
-				<div ng-if="post.comments[0]" class="row px-4">
+				<div ng-if="post.comments[0]" class="px-3">
 					<p class="card-text pt-2 mb-0 font-weight-bold">
 						{{post.comments[0].user.name}}
 						<span class="card-text pl-3 font-weight-normal">{{post.comments[0].text}}</span>
 					</p>
-					<p ng-if="post.comments[0].comments[0]" class="card-text font-weight-bold pl-3">
+					<p ng-if="post.comments[0].comments[0]" class="card-text font-weight-bold pl-3 pb-1">
 				 		{{post.comments[0].comments[0].user.name}}
 						<span class="card-text pl-3 font-weight-normal">{{post.comments[0].comments[0].text}}</span>
 					</p>

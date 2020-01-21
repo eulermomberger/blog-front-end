@@ -2,6 +2,10 @@ var blogClient = angular.module('blogClient',["ngRoute"]);
 
 blogClient.config(function($routeProvider) {
   $routeProvider
+    .when("/", {
+      templateUrl: "/blog-client/views/posts.html",
+      controller: 'BlogController'
+    })
     .when("/posts", {
       templateUrl: "/blog-client/views/posts.html",
       controller: 'BlogController'
@@ -97,16 +101,36 @@ blogClient.controller('ShowController', ['$scope', '$http', '$routeParams', func
     })
   }
 
-  $scope.postComment = function (comment, id) {
-    console.log(comment)
+  $scope.postComment = function (comment, id, comment_id) {
+    if(!comment_id)
+      var url = 'http://localhost:3000/posts/'+id+'/comments';
+    else
+      var url = 'http://localhost:3000/posts/'+id+'/comments/'+comment_id+'/comments';
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/posts/'+id+'/comments',
+      url: url,
       data: comment
     }).then(function successCallback(response) {
-      delete $scope.comment;
+      delete $scope.text;
       $scope.getPost();
+      $scope.commentForm.$setPristine();
     })
+  }
+
+  $scope.deleteComment = function (post_id, comment_id) {
+    let option = confirm('Deseja realmente deletar esse comentário?');
+    if(option) {
+      $http({
+        method: 'DELETE',
+        url: 'http://localhost:3000/posts/'+post_id+'/comments/'+comment_id
+      }).then(function successCallback(response) {
+        window.location.replace('/blog-client/#!/post/'+post_id);
+        $scope.getPost();
+      })
+    }
+    else {
+      window.location.replace('/blog-client/#!/post/'+post_id);
+    }
   }
 
   $scope.getPost();

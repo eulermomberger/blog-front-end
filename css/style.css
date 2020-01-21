@@ -93,6 +93,32 @@ a:link {
   padding: 5px;
 }
 
-.respost {
+.respond {
   font-size: 12px;
+}
+
+.alert {
+  text-align: center;
+}
+
+.menu {
+  list-style: none;
+  padding: 0px;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu li ul{
+  position:absolute; 
+  top:25px; 
+  left:0;
+  background-color:#fff; 
+  display:none;
+  list-style: none;
+} 
+
+.menu li:hover ul, .menu li.over ul{
+  display:block;
 }
