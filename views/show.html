@@ -17,21 +17,21 @@
 					{{comment.user.name}}
 					<span class="card-text pl-3 font-weight-normal">{{comment.text}}</span>
 				</div>
-				<button onclick="respond()" class="respond btn btn-link">Responder</button>
+				<button ng-click="respond(comment.id)" class="respond btn btn-link">Responder</button>
 				<button ng-click="deleteComment(post.id, comment.id)" class="respond btn btn-link">Deletar</button>
 				<div ng-if="comment.comments" ng-repeat="comment in comment.comments" class="card-text font-weight-bold py-1 pl-3">
 					<div class="comment">
 			 			{{comment.user.name}}
 						<span class="card-text pl-3 font-weight-normal">{{comment.text}}</span>
 					</div>
-					<button onclick="respond()" class="respond btn btn-link">Responder</button>
+					<button ng-click="respond(comment.id)" class="respond btn btn-link">Responder</button>
 					<button ng-click="deleteComment(post.id, comment.id)" class="respond btn btn-link">Deletar</button>
 					<div ng-if="comment.comments" ng-repeat="comment in comment.comments" class="card-text font-weight-bold ml-3">
 						<div class="comment">
 							{{comment.user.name}}
 							<span class="card-text pl-3 font-weight-normal">{{comment.text}}</span>
 						</div>
-						<button onclick="respond()" class="respond btn btn-link">Responder</button>
+						<button ng-click="respond(comment.id)" class="respond btn btn-link">Responder</button>
 						<button ng-click="deleteComment(post.id, comment.id)" class="respond btn btn-link">Deletar</button>
 					</div>
 				</div>
@@ -53,7 +53,7 @@
 			<div ng-show="commentForm.text.$invalid && commentForm.text.$dirty" class="alert alert-danger p-0">
 				<p>Insira algo no comentário!</p>
 			</div>
-			<button ng-click="postComment(text, post.id)" ng-disabled="commentForm.$invalid" class="btn title my-3" type="button">Publicar</button>
+			<button ng-click="postComment(text, post.id, comment_id)" ng-disabled="commentForm.$invalid" class="btn title my-3" type="button">Publicar</button>
 		</div>
 	</div>
 </div>

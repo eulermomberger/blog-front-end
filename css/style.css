@@ -40,12 +40,12 @@ header h5 {
 }
 
 .item {
-    border-radius: 10px;
-    width: calc(33.33333% - 32px);
-    height: 500px;
-    box-shadow: 1px 3px 6px 0px rgba(0,0,0,.16);
-    transition: transform .2s ease,box-shadow .2s ease,-webkit-transform .2s ease;
-    border-top: 5px solid #C6C6C6;
+  border-radius: 10px;
+  width: calc(33.33333% - 32px);
+  height: 500px;
+  box-shadow: 1px 3px 6px 0px rgba(0,0,0,.16);
+  transition: transform .2s ease,box-shadow .2s ease,-webkit-transform .2s ease;
+  border-top: 5px solid #C6C6C6;
 }
 
 .post {
@@ -79,6 +79,12 @@ a:link {
   font-family: "Playfair Display";
 }
 
+.firstComment {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 50%;
+}
+
 .banner-new {
   background-image: url('../imgs/bg-new.png');
   background-size: 100%;
@@ -108,17 +114,71 @@ a:link {
 
 .menu li {
   position: relative;
+  display: block;
+}
+
+.menu li a{
+  color:#333; 
+  text-decoration:none; 
+  padding-left: 0px; 
+  display:block;
 }
 
 .menu li ul{
   position:absolute; 
-  top:25px; 
-  left:0;
-  background-color:#fff; 
+  background-color: #FAFAFA; 
+  padding: 0%;
+  width: 150px;
   display:none;
   list-style: none;
+  border-radius: 10px;
+  box-shadow: 1px 3px 6px 0px rgba(0,0,0,.16);
 } 
 
 .menu li:hover ul, .menu li.over ul{
   display:block;
+}
+
+.menu li ul li{
+  display: block;
+  padding: 5px;
+  text-align: center;
+}
+
+.search {
+  height: 50px;
+  border: none;
+  outline: none;
+  padding-left: 50px;
+  width: 0;
+  position: absolute;
+  right: 0;
+  background: none;
+  z-index: 3;
+  transition: width 0.5s ease-out;
+  cursor: pointer;
+}
+
+.search:focus {
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  width: 20%;
+  color: white;
+  z-index: 1;
+  transition: width 0.5s ease-in;
+}
+
+.btnSearch { 
+  height: 50px;
+  width: 50px;
+  background:  url('../imgs/search.png')  center no-repeat;
+  background-size: 25px;
+  border: none;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.btnSearch:focus {
+  outline: none;
 }

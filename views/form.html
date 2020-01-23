@@ -1,23 +1,44 @@
 <div class="container">
-	<div class="row my-5 justify-content-center">
+	<form name="postForm" class="row my-5 justify-content-center">
 		<div class="col-md-8 input-group mb-4">
-			<input type="text" ng-model="post.title" class="form-control" name="title" placeholder="Título" ng-required="true">
+			<input ng-model="post.title" ng-required="true" type="text" class="form-control" name="title" placeholder="Título">
 		</div>
 		<div class="col-md-8 input-group mb-4">
-			<textarea ng-model="post.description" class="form-control" placeholder="Descrição do post" ng-required="true" ng-minlength="10"></textarea>
+			<textarea ng-model="post.description" ng-required="true" ng-minlength="10" name="description" class="form-control" placeholder="Descrição do post"></textarea>
 		</div>
 		<div class="row col-md-8 input-group mb-4">
-			<select class="mr-2 col-6 form-control" ng-model="post.user_id">
+			<select ng-model="post.user_id" ng-required="true" name="user" class="mr-2 col-6 form-control">
     			<option value="" disabled>Selecione o usuário</option>
     			<option value="{{user.id}}" ng-repeat="user in users">{{user.name}}</option>
   			</select>	
-			<select class="ml-2 form-control" ng-model="post.tag_ids" multiple>
+			<select ng-required="true" name="tag" class="ml-2 form-control" ng-model="post.tag_ids" multiple>
 				<option value="" disabled>Tags</option>
 				<option value={{tag.id}} ng-repeat="tag in tags">{{tag.name}}</option>
 			</select>
 		</div>
+	</form>
+	<div class="d-flex flex-column align-items-center">
+		<div ng-if="postForm.title.$invalid && postForm.title.$dirty" class="alert alert-danger px-5 py-0">
+			<p>Informe um título</p>
+		</div>
+		<div ng-if="postForm.description.$error.required && postForm.description.$dirty" class="alert alert-danger px-5 py-0">
+			<p>Insira uma descrição!</p>
+		</div>
+		<div ng-if="postForm.description.$error.minlength && postForm.description.$dirty" class="alert alert-danger px-5 p-0">
+			<p>A descrição é muito curta!</p>
+		</div>
+		<div ng-if="postForm.user.$error.required && postForm.user.$dirty" class="alert alert-danger px-5 p-0">
+			<p>Selecione o usuário</p>
+		</div>
+		<div ng-if="postForm.tag.$error.required && postForm.tag.$dirty" class="alert alert-danger px-5 p-0">
+			<p>Selecione a tag</p>
+		</div>
+		<div ng-if="error" class="alert alert-danger px-5 p-0">
+			<p>{{error}}</p>
+		</div>
 	</div>
 	<div class="row justify-content-center">
-		<button ng-click="postPost(post)" class="form-control btn-info col-6">Enviar</button>
+		<button ng-if="method == 'POST'" ng-click="postPost(post)" ng-disabled="postForm.$invalid" class="form-control btn-info col-6">Enviar</button>
+		<button ng-if="method == 'PUT'" ng-click="editPost(post)" ng-disabled="postForm.$invalid" class="form-control btn-info col-6">Enviar</button>
 	</div>
 </div>
