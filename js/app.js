@@ -1,0 +1,1 @@
+var blogClient = angular.module('blogClient',["ngRoute", 'angularUtils.directives.dirPagination']);

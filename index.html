@@ -7,8 +7,14 @@
 	<title>BLOG CLIENT</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-	<script src="./js/blog.js"></script>
 	<script src="./lib/angular-utils-pagination/dirPagination.js"></script>
+	<script src="./js/app.js"></script>
+	<script src="./js/config/config.js"></script>
+	<script src="./js/services/postServices.js"></script>
+	<script src="./js/controllers/posts/postsController.js"></script>
+	<script src="./js/controllers/posts/showController.js"></script>
+	<script src="./js/controllers/posts/editController.js"></script>
+	<script src="./js/controllers/posts/newController.js"></script>
 </head>
 <body>
 	<header class="header" id="scrollHeader">
@@ -21,6 +27,9 @@
 				<div class="row justify-content-between align-items-center p-2">
 					<a href="/blog-client/#!/posts/new">
 						<svg class="bi bi-plus mx-2" width="52px" height="52px" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H6a.5.5 0 010-1h3.5V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.5 10a.5.5 0 01.5-.5h4a.5.5 0 010 1h-3.5V14a.5.5 0 01-1 0v-4z" clip-rule="evenodd"/></svg>
+					</a>
+					<a href="/blog-client/#!/tags">
+						 <svg class="bi bi-tag" width="32px" height="32px" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2.5 4A1.5 1.5 0 014 2.5h4.586a1.5 1.5 0 011.06.44l7 7a1.5 1.5 0 010 2.12l-4.585 4.586a1.5 1.5 0 01-2.122 0l-7-7a1.5 1.5 0 01-.439-1.06V4zM4 3.5a.5.5 0 00-.5.5v4.586a.5.5 0 00.146.353l7 7a.5.5 0 00.708 0l4.585-4.585a.5.5 0 000-.708l-7-7a.5.5 0 00-.353-.146H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.5 6.5a2 2 0 114 0 2 2 0 01-4 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"/></svg>
 					</a>
 					<input ng-model="search" type="search" class="search" placeholder="Busca">
     				<button type="submit" class="btnSearch" />
