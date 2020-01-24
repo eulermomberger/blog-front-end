@@ -1,0 +1,25 @@
+<div class="container">
+	<form name="userForm" class="row my-5 justify-content-center">
+		<div class="col-md-7 input-group mb-4">
+			<input ng-model="user.name" ng-required="true" type="text" class="form-control" name="name" placeholder="Nome">
+		</div>
+		<div class="col-md-7 input-group mb-4">
+			<input ng-model="user.email" ng-required="true" type="text" class="form-control" name="email" placeholder="Email">
+		</div>
+	</form>
+	<div class="d-flex flex-column align-items-center">
+		<div ng-if="userForm.name.$invalid && userForm.name.$dirty" class="alert alert-danger px-5 py-0">
+			<p>Informe um nome</p>
+		</div>
+		<div ng-if="userForm.email.$invalid && userForm.email.$dirty" class="alert alert-danger px-5 py-0">
+			<p>Informe um email</p>
+		</div>
+		<div ng-if="error" class="alert alert-danger px-5 p-0">
+			<p>{{error}}</p>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<button ng-if="method == 'POST'" ng-click="postUser(user)" ng-disabled="userForm.$invalid" class="form-control btn-info col-6">Enviar</button>
+		<button ng-if="method == 'PUT'" ng-click="updateUser(user)" ng-disabled="userForm.$invalid" class="form-control btn-info col-6">Enviar</button>
+	</div>
+</div>

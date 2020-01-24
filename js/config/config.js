@@ -32,4 +32,16 @@ blogClient.config(function($routeProvider) {
       templateUrl: "/blog-client/views/formTag.html",
       controller: 'EditTagController'
     })
+    .when("/users", {
+      templateUrl: "/blog-client/views/users.html",
+      controller: 'UsersController'
+    })
+    .when("/users/new", {
+      templateUrl: "/blog-client/views/formUser.html",
+      controller: 'NewUserController'
+    })
+    .when("/user/edit/:id", {
+      templateUrl: "/blog-client/views/formUser.html",
+      controller: 'EditUserController'
+    })
 });
