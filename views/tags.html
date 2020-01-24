@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row justify-content-center my-5">
+		<table class="table table-striped col-4">
+			<thead class="thead-dark">
+				<tr>
+					<th>Name:</th>
+					<th></th>
+					<th><a href="/blog-client/#!/tags/new"><img class="icon" src="./imgs/adicionar.png"></a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="tag in tags" >
+					<td>{{tag.name}}</td>
+					<td class="px-0">
+						<a href="/blog-client/#!/tag/edit/{{tag.id}}" class="icon"><img src="./imgs/editar.svg"></a>
+					</td>
+					<td><a href="" ng-click="deleteTag(tag.id)" class="icon"><img src="./imgs/excluir.png"></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

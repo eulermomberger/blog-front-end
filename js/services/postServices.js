@@ -1,5 +1,3 @@
-var blogClient = angular.module('blogClient');
-
 blogClient.service('postsService', function($http, $routeParams){
   this.getPosts = function(option, value) {
     switch(option) {
