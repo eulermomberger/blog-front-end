@@ -17,7 +17,15 @@ blogClient.controller('EditUserController', function ($scope, $http, $routeParam
       		delete $scope.error;
       		window.location.replace('/blog-client/#!/users');
 		}, function errorCallback(response) {
-      		console.log(response)
+			var nome = ""
+			for (var [key, value] of Object.entries(response.data)) {
+    			$scope.error = value.toString();
+				nome = key
+			}
+      		
+      		switch($scope.error){
+          		case 'has already been taken': $scope.error = "Já há um usuário com esse "+nome;
+        	}
     	});
 	}
 
