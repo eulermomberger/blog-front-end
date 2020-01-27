@@ -5,37 +5,19 @@
 		</div>
 	</div>
 	<div class="row">
+
 		<div class="col-md-8">
 			<p class="lead">{{post.description}}</p>
 		</div>
+
 		<div class="col-md-4 card">
+
 			<div class="title">
 				<h3>Comentários:</h3>
 			</div>
-			<div ng-if="comment" ng-repeat="comment in post.comments" class="px-4 ">
-				<div class="comment card-text pt-2 mb-0 font-weight-bold">
-					{{comment.user.name}}
-					<span class="card-text pl-3 font-weight-normal">{{comment.text}}</span>
-				</div>
-				<button ng-click="respond(comment.id)" class="respond btn btn-link">Responder</button>
-				<button ng-click="deleteComment(post.id, comment.id)" class="respond btn btn-link">Deletar</button>
-				<div ng-if="comment.comments" ng-repeat="comment in comment.comments" class="card-text font-weight-bold py-1 pl-3">
-					<div class="comment">
-			 			{{comment.user.name}}
-						<span class="card-text pl-3 font-weight-normal">{{comment.text}}</span>
-					</div>
-					<button ng-click="respond(comment.id)" class="respond btn btn-link">Responder</button>
-					<button ng-click="deleteComment(post.id, comment.id)" class="respond btn btn-link">Deletar</button>
-					<div ng-if="comment.comments" ng-repeat="comment in comment.comments" class="card-text font-weight-bold ml-3">
-						<div class="comment">
-							{{comment.user.name}}
-							<span class="card-text pl-3 font-weight-normal">{{comment.text}}</span>
-						</div>
-						<button ng-click="respond(comment.id)" class="respond btn btn-link">Responder</button>
-						<button ng-click="deleteComment(post.id, comment.id)" class="respond btn btn-link">Deletar</button>
-					</div>
-				</div>
-			</div>
+
+			<comments-list></comments-list>
+
 			<form name="commentForm" class="mb-3">
 				<div class="input-group mt-5">
 					<div class="input-group-prepend">
@@ -47,13 +29,16 @@
 	 				<input ng-required="true" ng-model="text.text" name="text" type="text" id="comment" class="form-control" placeholder="Deixe seu comentário" >
 				</div>
 			</form>
+
 			<div ng-show="commentForm.usuario.$invalid && commentForm.text.$dirty" class="alert alert-danger p-0">
 				<p>Selecione um usuário!</p>
 			</div>
 			<div ng-show="commentForm.text.$invalid && commentForm.text.$dirty" class="alert alert-danger p-0">
 				<p>Insira algo no comentário!</p>
 			</div>
-			<button ng-click="postComment(text, post.id, comment_id)" ng-disabled="commentForm.$invalid" class="btn title my-3" type="button">Publicar</button>
+
+			<button ng-click="postComment(text, post.id)" ng-disabled="commentForm.$invalid" class="btn title my-3" type="button">Publicar</button>
+
 		</div>
 	</div>
 </div>
