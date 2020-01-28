@@ -1,5 +1,4 @@
 blogClient.controller('NewUserController', function ($scope, $http) {
-	$scope.method = "POST";
 
 	$scope.postUser = function(user) {
 		$http.post('http://localhost:3000/users',user)

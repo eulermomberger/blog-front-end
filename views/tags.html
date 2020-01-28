@@ -9,8 +9,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="tag in tags" >
-					<td>{{tag.name}}</td>
+				<tr ng-repeat="tag in tags | filter:search" >
+					<td>{{::tag.name}}</td>
 					<td class="px-0">
 						<a href="/blog-client/#!/tag/edit/{{tag.id}}" class="icon"><img src="./imgs/editar.svg"></a>
 					</td>

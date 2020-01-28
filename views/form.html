@@ -9,11 +9,11 @@
 		<div class="row col-md-8 input-group mb-4">
 			<select ng-model="post.user_id" ng-required="true" name="user" class="mr-2 col-6 form-control">
     			<option value="" disabled>Selecione o usuário</option>
-    			<option value="{{user.id}}" ng-repeat="user in users">{{user.name}}</option>
+    			<option value="{{user.id}}" ng-repeat="user in users">{{::user.name}}</option>
   			</select>	
 			<select ng-required="true" name="tag" class="ml-2 form-control" ng-model="post.tag_ids" multiple>
 				<option value="" disabled>Tags</option>
-				<option value={{tag.id}} ng-repeat="tag in tags">{{tag.name}}</option>
+				<option value={{tag.id}} ng-repeat="tag in tags">{{::tag.name}}</option>
 			</select>
 		</div>
 	</form>
@@ -38,7 +38,6 @@
 		</div>
 	</div>
 	<div class="row justify-content-center">
-		<button ng-if="method == 'POST'" ng-click="postPost(post)" ng-disabled="postForm.$invalid" class="form-control btn-info col-6">Enviar</button>
-		<button ng-if="method == 'PUT'" ng-click="editPost(post)" ng-disabled="postForm.$invalid" class="form-control btn-info col-6">Enviar</button>
+		<button ng-click="send(post)" ng-disabled="postForm.$invalid" class="form-control btn-info col-6">Enviar</button>
 	</div>
 </div>

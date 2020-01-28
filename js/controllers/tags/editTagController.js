@@ -1,5 +1,4 @@
 blogClient.controller('EditTagController', function ($scope, $http, $routeParams) {
-	$scope.method = "PUT";
 	$scope.tag = [];
 
 	function getTag(){
@@ -9,7 +8,7 @@ blogClient.controller('EditTagController', function ($scope, $http, $routeParams
   		})	
 	}
 
-	$scope.updateTag = function(tag) {
+	$scope.postTag = function(tag) {
 		$http.put('http://localhost:3000/tags/'+$routeParams.id, tag)
 		.then(function successCallback(response) {
       		delete $scope.tag;

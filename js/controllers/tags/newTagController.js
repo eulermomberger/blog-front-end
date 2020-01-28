@@ -1,5 +1,4 @@
 blogClient.controller('NewTagController', function ($scope, $http) {
-	$scope.method = "POST";
 	
 	$scope.postTag = function(tag) {
 		$http.post('http://localhost:3000/tags', tag)

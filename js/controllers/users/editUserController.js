@@ -10,7 +10,7 @@ blogClient.controller('EditUserController', function ($scope, $http, $routeParam
   		})	
 	}
 
-	$scope.updateUser = function(user) {
+	$scope.postUser = function(user) {
 		$http.put('http://localhost:3000/users/'+$routeParams.id, user)
 		.then(function successCallback(response) {
       		delete $scope.user;

@@ -1,8 +1,6 @@
-blogClient.controller('PostsController', function($scope, $http, postsService, tagsService) {
-  $scope.posts = [];
-  $scope.tags = [];
-
-  getPosts();
+blogClient.controller('PostsController', function($scope, $http, postsService, tags, posts) {
+  $scope.posts = posts.data;
+  $scope.tags = tags.data;
 
   $scope.filter = function(option, value) {
     postsService.getPosts(option, value).then(function(response) {
@@ -12,28 +10,17 @@ blogClient.controller('PostsController', function($scope, $http, postsService, t
   }
 
   $scope.cancel = function() {
-    getPosts();
+    $scope.posts = posts.data;
     delete $scope.option;
     delete $scope.value;
   }
-
-  function getPosts() {
-    postsService.getPosts().then(function(response) {
-      $scope.posts = response.data;
-    })
-  }
-
-  tagsService.getTags().then(function (response) {
-    $scope.tags = response.data;
-  })
 
   $scope.deletePost = function (id) {
     let option = confirm('Deseja realmente deletar esse post?');
     if(option) {
       $http.delete('http://localhost:3000/posts/'+id)
       .then(function successCallback(response) {
-        window.location.replace('/blog-client/#!/posts');
-        getPosts();
+        $scope.posts = posts.data;
       })
     }
     else {

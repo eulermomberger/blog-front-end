@@ -1,17 +1,8 @@
-blogClient.controller('NewController', function($scope, $http, usersService, tagsService) {
-  $scope.tags = [];
-  $scope.users = [];
-  $scope.method = 'POST'
-    
-  tagsService.getTags().then(function (response) {
-    $scope.tags = response.data;
-  })
+blogClient.controller('NewController', function($scope, $http, users, tags) {
+  $scope.tags = tags.data;
+  $scope.users = users.data;
 
-  usersService.getUsers().then(function (response){
-    $scope.users = response.data;
-  })
-
-  $scope.postPost = function(post) {
+  $scope.send = function(post) {
     $http.post('http://localhost:3000/posts', post)
     .then(function successCallback(response) {
       delete $scope.post;

@@ -13,7 +13,6 @@
 		</div>
 	</div>
 	<div class="row justify-content-center">
-		<button ng-if="method == 'POST'" ng-click="postTag(tag)" ng-disabled="tagForm.$invalid" class="form-control btn-info col-6">Enviar</button>
-		<button ng-if="method == 'PUT'" ng-click="updateTag(tag)" ng-disabled="tagForm.$invalid" class="form-control btn-info col-6">Enviar</button>
+		<button ng-click="postTag(tag)" ng-disabled="tagForm.$invalid" class="form-control btn-info col-6">Enviar</button>
 	</div>
 </div>
