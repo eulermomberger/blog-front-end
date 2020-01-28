@@ -6,10 +6,12 @@ blogClient.controller('TagsController', function($scope, $http, tags) {
 		if(option) {
       		$http.delete('http://localhost:3000/tags/'+id)
       		.then(function successCallback(response) {
-				$scope.tags = tags.data;
+				function find(element) {
+					return element.id != id
+				}
+				var filtered = $scope.tags.filter(find)
+				$scope.tags = filtered;
       		})
-    	} else {
-      		window.location.replace('/blog-client/#!/tags');
     	}
 	}
 })

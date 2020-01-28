@@ -6,10 +6,12 @@ blogClient.controller('UsersController', function ($scope, $http, users) {
 		if(option) {
 			$http.delete('http://localhost:3000/users/'+id)
       		.then(function successCallback(response) {
-        		$scope.users = users.data;
+        		function find(element) {
+					return element.id != id
+				}
+				var filtered = $scope.users.filter(find)
+				$scope.users = filtered;
       		})
-		} else {
-			window.location.replace('/blog-client/#!/users');
 		}
 	}
 })

@@ -16,7 +16,7 @@
 				<h3>Comentários:</h3>
 			</div>
 
-			<comments-list></comments-list>
+			<comment ng-repeat="comment in post.comments" comment="comment" actions="true"></comment>
 
 			<form name="commentForm" class="mb-3">
 				<div class="input-group mt-5">

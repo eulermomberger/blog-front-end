@@ -22,8 +22,8 @@ blogClient.controller('ShowController', function($scope, $http, $routeParams, po
     .then(function successCallback(response) {
       delete $scope.text;
       delete $scope.comment_id;
-      window.location.reload();
       $scope.commentForm.$setPristine();
+      getPost();
     }, function errorCallback(response) {
         
     });

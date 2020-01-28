@@ -59,21 +59,8 @@
 				<p class="card-text text-info">{{post.updated_at | date: 'EEE, MMM d'}}</p>
 				<p class="card-text font-italic text-muted">by: {{post.user.name}}</p>					
 			</div>
-			<div class="card">
-				<div ng-if="post.comments[0]" class="commentPost px-3">
-					<div class="firstComment">
-						<p class="card-text pt-2 mb-0 font-weight-bold">
-							{{post.comments[0].user.name}}
-							<span class="card-text pl-3 font-weight-normal">{{post.comments[0].text}}</span>
-						</p>
-					</div>
-					<div class="firstComment">
-						<p ng-if="post.comments[0].comments[0]" class="card-text font-weight-bold pl-3 pb-1">
-				 			{{post.comments[0].comments[0].user.name}}
-							<span class="card-text pl-3 font-weight-normal">{{post.comments[0].comments[0].text}}</span>
-						</p>
-					</div>
-				</div>
+			<div ng-if="post.comments[0]">
+				<comment comment="post.comments[0]"></comment>
 			</div>
 		</div>
 	</div>
