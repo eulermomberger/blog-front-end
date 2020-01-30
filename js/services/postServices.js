@@ -6,7 +6,7 @@ blogClient.service('postsService', function($http, $routeParams){
       case 'description': return $http.get('http://localhost:3000/posts/?description='+value);
       case 'comment': return $http.get('http://localhost:3000/posts/?comment='+value);
     }
-    return $http.get('http://localhost:3000/posts');   
+    return $http.get('http://localhost:3000/posts');
   }
 })
 
@@ -16,9 +16,9 @@ blogClient.service('postService', function($http, $routeParams){
   }
 })
 
-blogClient.service('usersService', function($http) {
-  this.getUsers = function() {
-    return $http.get('http://localhost:3000/users');
+blogClient.service('userService', function($http) {
+  this.getUser = function(id) {
+    return $http.get('http://localhost:3000/users/'+id);
   }
 })
 

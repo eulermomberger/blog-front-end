@@ -1,11 +1,14 @@
-blogClient.controller('NewUserController', function ($scope, $http) {
+blogClient.controller('NewUserController', function ($scope, $http, $location) {
+  document.getElementById("scrollHeader").style.display = "none";
+
+  $scope.action = "Cadastrar";
 
 	$scope.postUser = function(user) {
 		$http.post('http://localhost:3000/users',user)
 		.then(function successCallback(response) {
   		delete $scope.user;
   		delete $scope.error;
-  		window.location.replace('/blog-client/#!/users');
+  		$location.url('/login');
 		}, function errorCallback(response) {
   		var nome = ""
       for (var [key, value] of Object.entries(response.data)) {

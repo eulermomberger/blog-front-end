@@ -1,11 +1,11 @@
 <div ng-if="$ctrl" class="px-2">
 	<div class="comment card-text pt-2 pr-0 font-weight-bold">
-		{{$ctrl.comment.user.name}}
+		{{$ctrl.comment.user.username}}
 		<span class="card-text pl-3 font-weight-normal">{{$ctrl.comment.text}}</span>
 	</div>
 	<div ng-if="$ctrl.actions">
 		<button ng-click="$ctrl.respond($ctrl.comment.id)" class="respond btn btn-link">Responder</button>
-		<button ng-click="$ctrl.deleteComment($ctrl.comment.id)" class="respond btn btn-link">Deletar</button>
+		<button ng-if="$ctrl.comment.user.username == username" ng-click="$ctrl.deleteComment($ctrl.comment.id)" class="respond btn btn-link">Deletar</button>
 		<div class="py-1 pl-3">
 			<comment ng-repeat="comment in $ctrl.comment.comments" comment="comment" actions="true"></comment>
 		</div>

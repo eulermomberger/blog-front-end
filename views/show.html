@@ -20,13 +20,10 @@
 
 			<form name="commentForm" class="mb-3">
 				<div class="input-group mt-5">
-					<div class="input-group-prepend">
-						<select ng-required="true" ng-model="text.user_id" name="usuario" class="btn btn-outline-secondary dropdown-toggle">
-							<option class="dropdown-item bg-light" value="" disabled>Usuário</option>
-							<option class="dropdown-item bg-light" value="{{user.id}}" ng-repeat="user in users">{{user.name}}</option>
-						</select>
-					</div>
 	 				<input ng-required="true" ng-model="text.text" name="text" type="text" id="comment" class="form-control" placeholder="Deixe seu comentário" >
+	 				<div class="input-group-append">
+						<button ng-click="postComment(text, post.id)" ng-disabled="commentForm.$invalid" type="submit" class="btn btn-outline-secondary btn-info title" type="button">Publicar</button>
+					</div>
 				</div>
 			</form>
 
@@ -36,8 +33,6 @@
 			<div ng-show="commentForm.text.$invalid && commentForm.text.$dirty" class="alert alert-danger p-0">
 				<p>Insira algo no comentário!</p>
 			</div>
-
-			<button ng-click="postComment(text, post.id)" ng-disabled="commentForm.$invalid" class="btn title my-3" type="button">Publicar</button>
 
 		</div>
 	</div>

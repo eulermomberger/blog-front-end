@@ -1,0 +1,30 @@
+<div class="container-fluid row justify-content-center">
+	<form name="formLogin" class="login row col-7 mt-5 justify-content-center bg-dark">
+		<div class="d-flex flex-column col-md-7 input-group m-5">
+			<div class="d-flex flex-row justify-content-center mb-5">
+				<img src="https://www.scopi.com.br/wp-content/themes/scopi2k19/src/img/white-logo.svg" alt="Scopi">
+				<h3 class="pl-2 align-self-end text-white"> | Blog</h3>
+			</div>
+			<div>
+				<input ng-model="user.email" ng-required="true" type="email" class="form-control mb-5" name="email" placeholder="Email">
+			</div>
+			<div>
+				<input ng-model="user.password" ng-required="true" type="password" class="form-control mb-5" name="password" placeholder="Senha">
+			</div>
+			<div class="d-flex flex-column align-items-center">
+				<div ng-if="formLogin.email.$invalid && formLogin.email.$dirty" class="alert alert-danger px-5 py-0">
+					<p>Informe o email</p>
+				</div>
+				<div ng-if="error" class="alert alert-danger px-5 p-0">
+					<p>{{error}}</p>
+				</div>
+			</div>
+			<div>
+				<button ng-click="login(user)" ng-disabled="formLogin.$invalid" class="btn btn-info form-control">Entrar</button>
+			</div>
+			<div class="row justify-content-center mt-4">
+				<a href="/blog-client/#!/users/new">Cadastre-se agora!</a>
+			</div>
+		</div>
+	</form>
+</div>

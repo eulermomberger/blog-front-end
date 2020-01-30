@@ -1,5 +1,7 @@
-blogClient.controller('CommentsController', function($scope, $http, $routeParams, postService) {
-    var ctrl = this;
+blogClient.controller('CommentsController', function($scope, $http, $routeParams, $localStorage, postService) {
+  var ctrl = this;
+
+  $scope.username = $localStorage.currentUser.username;
 
 	ctrl.respond = function (comment_id) {
     	document.getElementById('comment').focus();

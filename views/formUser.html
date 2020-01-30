@@ -1,24 +1,53 @@
-<div class="container">
-	<form name="userForm" class="row my-5 justify-content-center">
-		<div class="col-md-7 input-group mb-4">
-			<input ng-model="user.name" ng-required="true" type="text" class="form-control" name="name" placeholder="Nome">
-		</div>
-		<div class="col-md-7 input-group mb-4">
-			<input ng-model="user.email" ng-required="true" type="email" class="form-control" name="email" placeholder="Email">
+<div class="container-fluid row justify-content-center">
+	<form name="formUser" class="login row col-7 my-5 justify-content-center bg-dark">
+		<div class="d-flex flex-column col-md-7 input-group m-5">
+			<div class="d-flex flex-row justify-content-center mb-5">
+				<img src="https://www.scopi.com.br/wp-content/themes/scopi2k19/src/img/white-logo.svg" alt="Scopi">
+				<h3 class="pl-2 align-self-end text-white"> | Blog</h3>
+			</div>
+			<div class="row">
+				<div class="col-md-6 mb-5">
+					<input ng-model="user.name" ng-required="true" type="text" class="form-control" name="name" placeholder="Nome">
+				</div>
+				<div class="col-md-6 input-group mb-5">
+					<div class="input-group-prepend">
+    					<span class="input-group-text">@</span>
+  					</div>
+					<input ng-model="user.username" ng-required="true" type="text" class="form-control" name="username" placeholder="Username">
+				</div>
+			</div>
+			<div class="mb-5">
+				<input ng-model="user.email" ng-required="true" type="email" class="form-control" name="email" placeholder="Email">
+			</div>
+			<div ng-show="action == 'Cadastrar'" class="row mb-5">
+				<div class="col-md-6">
+					<input ng-model="user.password" ng-required="true" type="password" class="form-control" name="password" placeholder="Senha">
+				</div>
+				<div class="col-md-6">
+					<input ng-model="user.password_confirmation" ng-required="true" type="password" class="form-control" name="password" placeholder="Confirme a senha">
+				</div>
+			</div>
+			<div class="d-flex flex-column align-items-center">
+				<div ng-if="formUser.name.$invalid && formUser.name.$dirty" class="alert alert-danger px-5 py-0">
+					<p>Informe um nome</p>
+				</div>
+				<div ng-if="formUser.email.$invalid && formUser.email.$dirty" class="alert alert-danger px-5 py-0">
+					<p>Informe um email</p>
+				</div>
+				<div ng-if="error" class="alert alert-danger px-5 p-0">
+					<p>{{error}}</p>
+				</div>
+			</div>
+			<div>
+				<button ng-click="postUser(user)" ng-disabled="formUser.$invalid" class="form-control btn btn-info">{{action}}</button>
+			</div>
+			<div ng-show="action == 'Cadastrar'" class="row justify-content-center mt-4">
+				<a href="/blog-client/#!/login">Entre agora!</a>
+			</div>
 		</div>
 	</form>
-	<div class="d-flex flex-column align-items-center">
-		<div ng-if="userForm.name.$invalid && userForm.name.$dirty" class="alert alert-danger px-5 py-0">
-			<p>Informe um nome</p>
-		</div>
-		<div ng-if="userForm.email.$invalid && userForm.email.$dirty" class="alert alert-danger px-5 py-0">
-			<p>Informe um email</p>
-		</div>
-		<div ng-if="error" class="alert alert-danger px-5 p-0">
-			<p>{{error}}</p>
-		</div>
-	</div>
-	<div class="row justify-content-center">
-		<button ng-click="postUser(user)" ng-disabled="userForm.$invalid" class="form-control btn-info col-6">Enviar</button>
-	</div>
 </div>
+
+
+
+

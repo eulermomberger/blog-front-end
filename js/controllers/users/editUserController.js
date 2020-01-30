@@ -1,5 +1,5 @@
-blogClient.controller('EditUserController', function ($scope, $http, $routeParams) {
-	$scope.method = "PUT";
+blogClient.controller('EditUserController', function ($scope, $http, $location, $routeParams) {
+	$scope.action = "Editar"
 
 	$scope.user = [];
 
@@ -15,7 +15,7 @@ blogClient.controller('EditUserController', function ($scope, $http, $routeParam
 		.then(function successCallback(response) {
       		delete $scope.user;
       		delete $scope.error;
-      		window.location.replace('/blog-client/#!/users');
+      		$location.url('/user');
 		}, function errorCallback(response) {
 			var nome = ""
 			for (var [key, value] of Object.entries(response.data)) {

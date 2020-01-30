@@ -1,8 +1,8 @@
-blogClient.controller('NewController', function($scope, $http, users, tags) {
+blogClient.controller('NewController', function($scope, $http, $localStorage, tags) {
   $scope.tags = tags.data;
-  $scope.users = users.data;
 
   $scope.send = function(post) {
+    post.user_id = $localStorage.currentUser.id;
     $http.post('http://localhost:3000/posts', post)
     .then(function successCallback(response) {
       delete $scope.post;

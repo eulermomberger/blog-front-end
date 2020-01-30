@@ -1,4 +1,4 @@
-blogClient.controller('ShowController', function($scope, $http, $routeParams, postService, usersService ) {
+blogClient.controller('ShowController', function($scope, $http, $routeParams, $localStorage, postService ) {
   $scope.post = [];
 
   function getPost() {
@@ -7,13 +7,10 @@ blogClient.controller('ShowController', function($scope, $http, $routeParams, po
     })
   }
 
-  usersService.getUsers().then(function (response){
-    $scope.users = response.data;
-  })
-
   getPost();
 
   $scope.postComment = function (comment, id) {
+    comment.user_id = $localStorage.currentUser.id
     if(!$routeParams.comment_id)
       var url = 'http://localhost:3000/posts/'+id+'/comments';
     else

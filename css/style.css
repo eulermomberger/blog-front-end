@@ -2,6 +2,10 @@ body {
   background-color: #FFFAFA;
 }
 
+.login {
+  border-radius: 10px;
+}
+
 header {
   z-index: 1000;
 }
@@ -189,4 +193,11 @@ table a img {
 
 .icon {
   float: right;
+}
+
+.profile {
+  border-top: 5px solid #C6C6C6;
+  border-radius: 30px;
+  box-shadow: 1px 3px 6px 0px rgba(0,0,0,.16);
+  background-color: #FFF;
 }

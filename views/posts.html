@@ -57,7 +57,7 @@
 			</div>
 			<div class="row d-flex justify-content-between p-3 align-items-end">
 				<p class="card-text text-info">{{post.updated_at | date: 'EEE, MMM d'}}</p>
-				<p class="card-text font-italic text-muted">by: {{post.user.name}}</p>					
+				<p class="card-text font-italic text-muted">by: {{post.user.username}}</p>					
 			</div>
 			<div ng-if="post.comments[0]">
 				<comment comment="post.comments[0]"></comment>

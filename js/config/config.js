@@ -1,7 +1,8 @@
 blogClient.config(function($routeProvider) {
   $routeProvider
-    .when("/", {
-      redirectTo: "/posts"
+    .when("/login", {
+      templateUrl: "/blog-client/views/login.html",
+      controller: "LoginController"
     })
     .when("/posts", {
       templateUrl: "/blog-client/views/posts.html",
@@ -23,9 +24,6 @@ blogClient.config(function($routeProvider) {
       templateUrl: "/blog-client/views/form.html",
       controller: 'NewController',
       resolve: {
-        users: function (usersService) {
-          return usersService.getUsers();
-        },
         tags: function (tagsService) {
           return tagsService.getTags();
         }
@@ -35,9 +33,6 @@ blogClient.config(function($routeProvider) {
       templateUrl: "/blog-client/views/form.html",
       controller: 'EditController',
       resolve: {
-        users: function (usersService) {
-          return usersService.getUsers();
-        },
         tags: function (tagsService) {
           return tagsService.getTags();
         }
@@ -60,14 +55,9 @@ blogClient.config(function($routeProvider) {
       templateUrl: "/blog-client/views/formTag.html",
       controller: 'EditTagController'
     })
-    .when("/users", {
-      templateUrl: "/blog-client/views/users.html",
-      controller: 'UsersController',
-      resolve: {
-        users: function (usersService) {
-          return usersService.getUsers();
-        }
-      }
+    .when("/user", {
+      templateUrl: "/blog-client/views/user.html",
+      controller: 'UsersController'
     })
     .when("/users/new", {
       templateUrl: "/blog-client/views/formUser.html",
