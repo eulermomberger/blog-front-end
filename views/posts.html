@@ -30,21 +30,23 @@
 	<div class="row">
 		<div class="item mx-md-3 my-4 card p-4" dir-paginate="post in posts | filter:search | itemsPerPage:9">
 			<div class="row justify-content-between">
-				<ul class="menu">
-					<li>
-						<svg class="bi bi-three-dots-vertical" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  							<path fill-rule="evenodd" d="M11.5 15a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>
-						</svg>
-						<ul>
-							<li>
-								<a href="/blog-client/#!/post/edit/{{post.id}}"><h6>Editar</h6></a>
-							</li>
-							<li>
-								<a href="#" ng-click="deletePost(post.id)">Deletar</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
+				<div>
+					<ul ng-if="post.user.username == currentUser" class="menu">
+						<li>
+							<svg class="bi bi-three-dots-vertical" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	  							<path fill-rule="evenodd" d="M11.5 15a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>
+							</svg>
+							<ul>
+								<li>
+									<a href="/blog-client/#!/post/edit/{{post.id}}"><h6>Editar</h6></a>
+								</li>
+								<li>
+									<a href="#" ng-click="deletePost(post.id)">Deletar</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 				<div class="row">
 					<h6 class="mr-3 text-success font-weight-bold" ng-repeat="tag in post.tags">
 						{{tag.name}}
@@ -57,7 +59,7 @@
 			</div>
 			<div class="row d-flex justify-content-between p-3 align-items-end">
 				<p class="card-text text-info">{{post.updated_at | date: 'EEE, MMM d'}}</p>
-				<p class="card-text font-italic text-muted">by: {{post.user.username}}</p>					
+				<p class="author card-text font-italic text-muted">by: <a href="/blog-client/#!/user/{{post.user.username}}">{{post.user.username}}</a></p>					
 			</div>
 			<div ng-if="post.comments[0]">
 				<comment comment="post.comments[0]"></comment>

@@ -11,6 +11,13 @@ blogClient.controller('LoginController', function($scope, $http, $location, $loc
 			document.getElementById("scrollHeader").style.display = "block";
 			$http.defaults.headers.common.Authorization = response.data.token;
 			$location.url('/posts');
+		}, function errorCallback(response) {
+			console.log(response.data)
+			$scope.error = response.data.error;
+			switch($scope.error){
+				case 'user not found': $scope.error = "Usuário não encontrado"; break;
+				case 'password incorrect': $scope.error = "Senha incorreta"; break;
+			}
 		})
 	}
 })

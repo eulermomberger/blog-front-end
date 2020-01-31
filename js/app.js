@@ -3,8 +3,8 @@ var blogClient = angular.module('blogClient',["ngRoute", 'angularUtils.directive
 blogClient.run(function ($rootScope, $http, $location, $localStorage, userService){
 	if ($localStorage.currentUser) {
     $http.defaults.headers.common.Authorization = $localStorage.currentUser.token;
+    $rootScope.currentUser = $localStorage.currentUser.username;
   }
-
 
   if($location.url() == '/') {
     if ($localStorage.currentUser) {

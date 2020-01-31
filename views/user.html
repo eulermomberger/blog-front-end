@@ -8,7 +8,7 @@
 					<h6 class="mx-5">@{{user.username}}</h6>
 				</div>
 			</div>
-			<div>
+			<div ng-if="currentUser == user.username">
 				<button class="btn btn-outline-info"><a href="/blog-client/#!/user/edit/{{user.id}}">Editar perfil</a></button>
 				<button ng-click="logout()" class="btn btn-outline-danger">Sair</button>
 			</div>
@@ -19,6 +19,9 @@
 			</div>
 			<div class="mx-5">
 				<strong>Criado em:</strong> {{user.created_at | date: 'mediumDate'}}
+			</div>
+			<div class="mx-5">
+				<strong>Posts:</strong> {{user.number_of_posts}}
 			</div>
 		</div>
 	</div>

@@ -17,8 +17,8 @@ blogClient.service('postService', function($http, $routeParams){
 })
 
 blogClient.service('userService', function($http) {
-  this.getUser = function(id) {
-    return $http.get('http://localhost:3000/users/'+id);
+  this.getUser = function(username) {
+    return $http.get('http://localhost:3000/users/'+username);
   }
 })
 

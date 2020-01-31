@@ -1,6 +1,6 @@
 <div ng-if="$ctrl" class="px-2">
 	<div class="comment card-text pt-2 pr-0 font-weight-bold">
-		{{$ctrl.comment.user.username}}
+		<a href="/blog-client/#!/user/{{$ctrl.comment.user.username}}">{{$ctrl.comment.user.username}}</a>
 		<span class="card-text pl-3 font-weight-normal">{{$ctrl.comment.text}}</span>
 	</div>
 	<div ng-if="$ctrl.actions">

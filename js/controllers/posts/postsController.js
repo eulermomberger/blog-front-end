@@ -1,4 +1,4 @@
-blogClient.controller('PostsController', function($scope, $http, postsService, tags, posts) {
+blogClient.controller('PostsController', function($scope, $http, $location, postsService, tags, posts) {
   $scope.posts = posts.data;
   $scope.tags = tags.data;
 
@@ -21,10 +21,11 @@ blogClient.controller('PostsController', function($scope, $http, postsService, t
       $http.delete('http://localhost:3000/posts/'+id)
       .then(function successCallback(response) {
         $scope.posts = posts.data;
+        $location.url("/posts")
       })
     }
     else {
-      window.location.replace('/blog-client/#!/posts');
+      $location.url("/posts")
     }
   }
 });

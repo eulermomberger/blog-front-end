@@ -55,7 +55,7 @@ blogClient.config(function($routeProvider) {
       templateUrl: "/blog-client/views/formTag.html",
       controller: 'EditTagController'
     })
-    .when("/user", {
+    .when("/user/:username", {
       templateUrl: "/blog-client/views/user.html",
       controller: 'UsersController'
     })

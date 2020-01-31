@@ -24,7 +24,7 @@
 					<input ng-model="user.password" ng-required="true" type="password" class="form-control" name="password" placeholder="Senha">
 				</div>
 				<div class="col-md-6">
-					<input ng-model="user.password_confirmation" ng-required="true" type="password" class="form-control" name="password" placeholder="Confirme a senha">
+					<input ng-model="user.password_confirmation" ng-required="true" type="password" class="form-control" name="password_confirmation" placeholder="Confirme a senha">
 				</div>
 			</div>
 			<div class="d-flex flex-column align-items-center">
@@ -33,6 +33,12 @@
 				</div>
 				<div ng-if="formUser.email.$invalid && formUser.email.$dirty" class="alert alert-danger px-5 py-0">
 					<p>Informe um email</p>
+				</div>
+				<div ng-if="formUser.username.$invalid && formUser.username.$dirty" class="alert alert-danger px-5 py-0">
+					<p>Informe um username</p>
+				</div>
+				<div ng-if="formUser.password.$invalid && formUser.password.$dirty" class="alert alert-danger px-5 py-0">
+					<p>Informe a senha</p>
 				</div>
 				<div ng-if="error" class="alert alert-danger px-5 p-0">
 					<p>{{error}}</p>

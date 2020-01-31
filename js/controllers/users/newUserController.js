@@ -9,14 +9,13 @@ blogClient.controller('NewUserController', function ($scope, $http, $location) {
   		delete $scope.user;
   		delete $scope.error;
   		$location.url('/login');
-		}, function errorCallback(response) {
-  		var nome = ""
-      for (var [key, value] of Object.entries(response.data)) {
-        $scope.error = value.toString();
-        nome = key
-      }      
-      switch($scope.error){
-        case 'has already been taken': $scope.error = "Já há um usuário com esse "+nome;
+		}, function errorCallback(response) {   
+      switch(response.data.errors.shift()){
+        case "Password confirmation doesn't match Password": $scope.error = "As senhas não combinam!"; break;
+        case "Name has already been taken": $scope.error = "Já já um usuário com esse nome!"; break;
+        case "Username has already been taken": $scope.error = "Já já um usuário com esse username!"; break;
+        case "Email has already been taken": $scope.error = "Já já um usuário com esse email!"; break;
+        case "Password is too short (minimum is 6 characters)": $scope.error = "Senha muito curta"; break;
       }
   	});
 	}

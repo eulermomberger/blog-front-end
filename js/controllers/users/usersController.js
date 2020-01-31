@@ -1,13 +1,11 @@
-blogClient.controller('UsersController', function ($scope, $http, $localStorage, $location, userService) {
+blogClient.controller('UsersController', function ($scope, $http, $localStorage, $location, $routeParams, userService) {
 	$scope.user = [];
 
 	function getUser() {
-		if($localStorage.currentUser) {
-			userService.getUser($localStorage.currentUser.id)
-			.then(function successCallback(response) {
-				$scope.user = response.data;
-			})
-		}
+		userService.getUser($routeParams.username)
+		.then(function successCallback(response) {
+			$scope.user = response.data;
+		})
 	}
 
 	getUser();
